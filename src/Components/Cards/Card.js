@@ -1,11 +1,12 @@
 import React from 'react'
 import "../../assets/css/cards.css"
 import nopic from "../../assets/Images/nopic.png"
+import {Link} from "react-router-dom"
 
 function Card({product}) {
     return (
         <>
-            <div className="card">
+        <Link className="card" to={`/product/${product._id}`}>
                 <div className="card-image">
                     <img src={product.image || product.images || nopic} alt="product" /> 
                 </div>
@@ -17,7 +18,7 @@ function Card({product}) {
                     <div className="card-price">
                         <p>${product.price || 0}</p>
                     </div>
-                </div>
+        </Link>
         </>
     )
 }

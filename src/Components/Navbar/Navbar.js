@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from "../../assets/Images/lootsy-logo.png"
 import search from "../../assets/Images/search.svg"
+import {Link} from "react-router-dom"
 
 const Navbar=()=>{
     return(
@@ -8,7 +9,7 @@ const Navbar=()=>{
             <nav className="navbar">
                 <div className="container">
                     <div className="navbar-logo">
-                        <img src={logo} alt="Logo" />
+                       <Link to="/"><img src={logo} alt="Logo" /></Link> 
                     </div>
                     <div className="navbar-search">
                         <form>
