@@ -3,7 +3,8 @@
 :root{
   --main-color: #F9F9F9;
   --secondary-color: #191716;
-  --container: 1%;
+  --third-color: #F7B32B;
+  --container: 1.2% 5%;
   --general-family: "Lato";
   --secondary-family: "Poppins";
 }
@@ -16,20 +17,25 @@ body{
 }
 
 .navbar{
-  overflow: hidden;
   position: fixed;
   z-index:1; 
   top: 0;
   width: 100%;
   background-color: var(--main-color);
+  overflow: visible;
+  height: 10vh;
 }
 
 .navbar .container{
   padding: var(--container);
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding-bottom: 0;
+}
+
+.navbar-logo{
+  align-self: flex-start;
 }
 
 .navbar-logo img{
@@ -55,30 +61,46 @@ body{
   color: var(--main-color);
 }
 
-.navbar-search img{
+.navbar-search button{
   display: inline;
   position:absolute;
-  right: 4%;
-  bottom: 15px;
+  top: 12px;
+  left: 350px;
+  color: var(--main-color);
+  background-color: transparent;
+  border: none;
+  font-size: 1.2em;
+}
+.navbar-buttons{
+  align-self: flex-start;
 }
 
 .navbar-buttons ul{
   display: flex;
   list-style: none;
   padding: 0;
+  margin: 0;
+  justify-content: center;
 }
 
-.navbar-buttons ul li:nth-child(1){
+.navbar-buttons ul .nav-item:nth-child(1){
   padding: none;
   padding: 5%;
+  color: var(--secondary-color);
 }
 
-.navbar-buttons ul li:nth-child(2){
+.navbar-buttons ul .nav-item:nth-child(2){
   margin-left: 1em;
   background-color: var(--secondary-color);
   color: var(--main-color);
   border-radius: 10px;
   padding: 5%;
+  overflow: visible;
+}
+
+.navbar-buttons ul .nav-item:nth-child(2):hover{
+  background-color: var(--third-color);
+  color: var(--secondary-color);
 }
 
 
@@ -86,6 +108,11 @@ body{
   font-size: 1.1em;
   font-family: var(--general-family);
   text-transform:uppercase;
+  text-decoration: none;
+}
+
+.nav-item li{
+  white-space: nowrap;
 }
 
 .hero{
@@ -172,7 +199,7 @@ body{
   text-align: center;
   font-size: 2.8em;
   font-family: var(--secondary-family);
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 .loader{
@@ -246,6 +273,20 @@ body{
 .isActive{
   background-color: var(--main-color) !important;
   color: var(--secondary-color) !important;
+}
+
+.logout-item{
+  margin-left: 1em;
+  text-decoration: none;
+  background-color: var(--secondary-color);
+  color: var(--main-color);
+  border-radius: 10px;
+  padding: 5%;
+  overflow: visible;
+}
+
+.user-name{
+  font-family: var(--secondary-family);
 }
 
 @keyframes loading {

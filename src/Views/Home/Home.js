@@ -1,51 +1,15 @@
-import React,{useEffect,useState} from "react";
-import axios from "axios";
-import CardList from "../../Components/Cards/CardList"
+import React from "react";
 import Pagination from "../../Components/Pagination/Pagination"
 import Footer from "../../Components/Footer/Footer"
+import Buttons from "../../Components/Buttons/Buttons"
+import {ProductsProvider} from "../../Context/ProductsContext"
+import {CarProvider} from "../../Context/CarContext"
+
 
 const Home=()=>{
-    const [data, setData]=useState([]);
-    const [isLoading, setIsLoading] = useState(true)
-    const [currentPage,setCurrentPage]= useState(1)
-    const [productsPerPage] = useState(16)
-
-    // TODO: SEND DATAFETCHING TO UTILS
-    const dataFetching= async ()=>{
-        const response=await axios.get("https://ecomerce-master.herokuapp.com/api/v1/item")
-        const products=response.data
-        setData(products)
-        setIsLoading(false)
-    }
-
-    useEffect(()=>{
-        dataFetching()
-    },[])
-
-    // PAGINATION LOGIC
-    const indexOfLast=currentPage * productsPerPage;
-    const indexOfFirst=indexOfLast - productsPerPage;
-    const currentProducts= data.slice(indexOfFirst, indexOfLast)
-
-    // Change Page
-    const handlePage=(pageNumber)=>{
-        setCurrentPage(pageNumber)
-    }
-
-    const handleReturn=(pageNumber,pages)=>{
-        if(pageNumber!==pages[0]){
-            setCurrentPage(pageNumber-1)
-        }
-    }
-
-    const handleNext=(pageNumber,pages)=>{
-        if(pageNumber!==pages[pages.length -1]){
-            setCurrentPage(pageNumber+1)
-        }
-    }
-
     return (
         <>
+        <ProductsProvider>
         <section className="hero">
             <div className="main-message">
                 <h1>FIND EXACTLY WHAT YOU <br/>ARE LOOKING FOR</h1>
@@ -85,15 +49,13 @@ const Home=()=>{
         </section>
         <section className="products">
             <h2 className="products-title">Products</h2>
-            {isLoading?<div className="loader">Loading...</div>:
-            <div>
-            <CardList data={currentProducts}/>
-            {/* TODO: CHECK A BETTER WAY */}
-            <Pagination currentPage={currentPage} productsPerPage={productsPerPage} totalProducts={data.length} handlePage={handlePage} handleReturn={handleReturn} handleNext={handleNext}/>
-            </div>
-            }   
+            <Pagination/>
         </section>
+        </ProductsProvider>
         <Footer/>
+        <CarProvider>
+        <Buttons/>
+        </CarProvider>
         </>
     )
 }

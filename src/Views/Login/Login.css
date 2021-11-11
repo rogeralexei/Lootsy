@@ -1,0 +1,111 @@
+/* :root{
+    --main-color: #F9F9F9;
+    --secondary-color: #191716;
+    --third-color: #F7B32B;
+    --container: 1%;
+    --general-family: "Lato";
+    --secondary-family: "Poppins";
+} */
+
+.form-container{
+    background-color: var(--secondary-color); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: var(--secondary-family);
+}
+
+.form-container img{
+    max-width: 18%;
+}
+
+.form-logo{
+    text-align: center;
+}
+
+.form-content{
+    margin-top: 15px;
+    background-color: var(--main-color);
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.form-content h2{
+    margin-top: 0;
+}
+
+
+.form-container .login-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container .login-form input{
+    font-size: 1.15em;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    padding: 5px;
+    outline: none;
+}
+
+
+.form-container .login-form button{
+    font-size: 1em;
+    border: none;
+    background-color: var(--secondary-color); 
+    color: var(--main-color);
+    margin-bottom: 10px;
+    padding: 5px 0;
+    border-radius: 10px;
+}
+
+.form-container .login-form button:hover{
+    color: var(--secondary-color);
+    background-color: var(--third-color);
+}
+
+.extra-register{
+    text-align: center;
+}
+
+.extra-register button{
+    font-size: 1em;
+    border: none;
+    background-color: var(--secondary-color); 
+    color: var(--main-color);
+    padding: 5px 0;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.btn{
+    font-family: var(--secondary-family);
+    outline: none;
+}
+
+.btn:hover{
+    color: var(--secondary-color);
+    background-color: var(--third-color);
+}
+
+.circle{
+    background-color: white;
+    opacity: 0.5; 
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    position: fixed;
+}
+
+.top-right{
+    top: -40px;
+    right: -50px;
+}
+
+.bottom-left{
+    bottom: -40px;
+    left: -50px;
+}

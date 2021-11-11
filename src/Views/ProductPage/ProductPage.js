@@ -3,8 +3,9 @@ import {useParams} from 'react-router-dom'
 import axios from 'axios'
 import Footer from "../../Components/Footer/Footer"
 import Product from "../../Components/Product/Product"
+import Buttons from "../../Components/Buttons/Buttons"
+import {CarProvider} from "../../Context/CarContext"
 
-// TODO: Work on Product Page
 function ProductPage() {
     const [product,setProduct]= useState({})
     const {id}=useParams()
@@ -17,11 +18,14 @@ function ProductPage() {
 
     useEffect(() => {
         dataFetching()
-    },[])
+    },[product])
 
     return (
         <>
+            <CarProvider>
             <Product product={product}/>
+            <Buttons/>
+            </CarProvider>
             <Footer/>
         </>
     )

@@ -3,10 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Routes from './Routes/index'
 import reportWebVitals from './reportWebVitals';
+import ReactNotification from "react-notifications-component"
+import 'react-notifications-component/dist/theme.css'
+import 'animate.css';
+import {UserProvider} from "../src/Context/UserContext"
 
 ReactDOM.render(
   <React.StrictMode>
+    <ReactNotification/>
+    <UserProvider>
     <Routes/>
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

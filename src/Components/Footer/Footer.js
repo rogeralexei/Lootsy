@@ -10,12 +10,12 @@ function Footer() {
             <ul>
                 <li href="#!">Login</li>
                 <li href="#!">Sign Up</li>
-                <li href="#!">Vender un producto</li>
-                <li href="#!">Contactanos</li>
+                <li href="#!">Sell a product</li>
+                <li href="#!">Contact Us</li>
             </ul>
         </div>
         <div className="footer-info">
-            <h3>Found Us</h3>
+            <h3>Find Us</h3>
             <ul>
                 <li><FontAwesomeIcon icon={faFacebook}/></li>
                 <li><FontAwesomeIcon icon={faTwitter}/></li>

@@ -1,16 +1,51 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faAngleLeft, faAngleRight} from "@fortawesome/free-solid-svg-icons"
+import {useProductsContext} from "../../Context/ProductsContext"
+import CardList from "../Cards/CardList"
 
-function Pagination({productsPerPage,totalProducts, handlePage, currentPage,handleReturn,handleNext}) {
+function Pagination() {
+    const [currentPage,setCurrentPage]= useState(1)
+    const [productsPerPage] = useState(16)
+    
+    // DECLARE CONTEXT
+    const context=useProductsContext();
+    let isLoading=context.isLoading;
+
+    // PAGINATION LOGIC
+    const indexOfLast=currentPage * productsPerPage;
+    const indexOfFirst=indexOfLast - productsPerPage;
+    const currentProducts= context.data.slice(indexOfFirst, indexOfLast)
+
+    // Change Page
+    const handlePage=(pageNumber)=>{
+        setCurrentPage(pageNumber)
+    }
+
+    const handleReturn=(pageNumber,pages)=>{
+        if(pageNumber!==pages[0]){
+            setCurrentPage(pageNumber-1)
+        }
+    }
+
+    const handleNext=(pageNumber,pages)=>{
+        if(pageNumber!==pages[pages.length -1]){
+            setCurrentPage(pageNumber+1)
+        }
+    }
+    
     const pageNumbers=[]
+    const totalProducts=context.data.length;
 
     for (let i=1; i<=Math.ceil(totalProducts/productsPerPage);i++){
         pageNumbers.push(i)
     }
 
-    // TODO: Fix logic (No more than 8, no less than 1)
     return (
+        <>
+        {isLoading? <div className="loader">Loading...</div>:(
+        <div>
+        <CardList data={currentProducts}/>
         <nav className="bottom-pagination">
             <ul className="pagination">
                 <li>
@@ -30,6 +65,9 @@ function Pagination({productsPerPage,totalProducts, handlePage, currentPage,hand
                 </li>
             </ul>
         </nav>
+        </div>
+        )}
+        </>
     )
 }
 
