@@ -34,7 +34,7 @@ function Product({product}) {
         <div id="main">
         <div  className="product">
             <div className="product-image">
-                <img src={product.image} alt="" />
+                <img src={product.image || product.images} alt="" />
             </div>
             <div className="product-content">
                 <h2>{product.product_name}</h2>
